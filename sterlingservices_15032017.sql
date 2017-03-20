@@ -1,7 +1,11 @@
 -- phpMyAdmin SQL Dump
 -- version 4.6.5.2
 -- https://www.phpmyadmin.net/
+<<<<<<< HEAD
 -- DJM
+=======
+--
+>>>>>>> origin/master
 -- Host: localhost
 -- Generation Time: Mar 14, 2017 at 05:15 PM
 -- Server version: 10.1.21-MariaDB
