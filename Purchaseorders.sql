@@ -23,6 +23,9 @@ INSERT INTO `purchaseorder` (`id`, `supplier_id`, `job_id`, `quote_id`, `custome
 --
 -- Table structure for table `purchaseordercalloff`
 --
+Need delivery option table
+
+
 
 CREATE TABLE `purchaseordercalloff` (
   `id` int(11) NOT NULL,
@@ -39,8 +42,8 @@ CREATE TABLE `purchaseordercalloff` (
   `vat_amount` int(6) DEFAULT NULL,
   `total_inc_vat` int(6) DEFAULT NULL,
   `po_sent` tinyint(2) NOT NULL,
-  `po_sent_date` datetime DEFAULT CURRENT_TIMESTAMP,
-  `date_created` datetime DEFAULT CURRENT_TIMESTAMP
+  `po_sent_date` timestamp DEFAULT CURRENT_TIMESTAMP,
+  `date_created` timestamp DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
