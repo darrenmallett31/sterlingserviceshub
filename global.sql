@@ -14,21 +14,8 @@ CREATE TABLE `globalsettings` (
   `county` varchar(32) DEFAULT NULL,
   `postcode` varchar(12) NOT NULL,
   `tel_number` varchar(12) NOT NULL,
-
-
   `default_kpi_quote_rtnd_by` int(11) DEFAULT NULL,
   `default_credit_hard_limit` int(11) NOT NULL,
   `default_credit_soft_limit` int(11) NOT NULL,
-  `date_updated` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
-CREATE TABLE `documentation` (
-  `id` int(11) NOT NULL,
-  `doc_name` varchar(32) NOT NULL,
-  `description` varchar(256) NOT NULL,
-  `header` text DEFAULT NULL,
-  `main_body` text DEFAULT NULL,
-  `footer` text DEFAULT NULL,
-  `modified_by` varchar(64) NOT NULL,
   `date_updated` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
