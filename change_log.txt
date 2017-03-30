@@ -1,3 +1,21 @@
+Updated 30th March 2017
+-----------------------
+
+1. New Tables
+assets
+abscenserequest
+email_server
+global
+internatl_documents
+programboard
+tasks
+timeentry
+uploaded_docs
+
+These have been uploaded as seperate sql files so I do not contaminate the master schema
+ 
+
+
 Updated 21st March 2017
 -----------------------
 
