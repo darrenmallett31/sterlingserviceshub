@@ -1,3 +1,11 @@
+Updated 2nd April 2017
+----------------------
+
+1. Modified Table
+
+purchase_order_calloff
+    Changed po_sent_date to datetime NOT NULL (as 2 TIMESTAMP DEFAULTS are unsupported on same table for 5.5 mysql)
+
 Updated 21st March 2017
 -----------------------
 
