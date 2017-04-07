@@ -1,3 +1,18 @@
+Updated 7th April 2017
+----------------------
+
+1. New Tables
+
+    asset_type
+    asset (and TRIGGERS)
+    asset_history
+
+    settings (and TRIGGERS)
+    settings_history
+
+    documentation (and TRIGGERS)
+    documentation_history
+
 Updated 2nd April 2017
 ----------------------
 
