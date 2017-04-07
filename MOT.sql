@@ -8,7 +8,6 @@ CREATE TABLE `MOT` (
   `employee_id` varchar(10) DEFAULT NULL,
   `booked_date` varchar(64) DEFAULT NULL,
   `booked_garage` varchar(64) DEFAULT NULL,
-
   `item_rate` int(11) DEFAULT NULL,
   `category` varchar(64) DEFAULT NULL,
   `supplier` varchar(64)  DEFAULT NULL,
