@@ -541,6 +541,7 @@ CREATE TABLE `purchase_order_calloff` (
   `total_inc_vat` decimal(15,2) NOT NULL DEFAULT '0.00',
   `po_sent_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `date_created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `po_sent_date` datetime NOT NULL,
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
