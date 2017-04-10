@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Apr 07, 2017 at 12:50 PM
+-- Generation Time: Apr 10, 2017 at 03:18 PM
 -- Server version: 5.5.54-0+deb8u1
 -- PHP Version: 5.6.30-0+deb8u1
 
@@ -58,8 +58,8 @@ CREATE TABLE IF NOT EXISTS `asset` (
 --
 
 INSERT INTO `asset` (`id`, `asset_type_id`, `employee_id`, `name`, `date_allocated`, `date_to_service`, `make`, `model`, `serial_number`, `internal_id`, `in_service_date`, `total_cost`, `purchase_date`, `depreciation_years`, `depreciation_rate`, `book_value`, `supplier_id`, `tracker_id`, `allocated_employee_id`, `allocation_status`, `location`, `notes`, `condition`, `date_updated`) VALUES
-(1, 1, 2, 'Audi A3', '2017-04-07 11:51:33', '2017-07-06 11:51:33', 'Audi', 'A3', 'DAZ001', 'WRECK001', 'From the start of April 2017', 22599.99, '2017-04-07 11:51:33', 3, 8500.99, 22599.99, NULL, 'TRCK001', 1, 0, 'Burton on Salmon', 'This won''t last long!', 'New', '2017-04-07 10:55:29'),
-(2, 2, 2, 'A Big Digger', '2017-04-07 11:58:07', '2017-05-22 11:58:07', 'BIG', 'DIGGER', 'DAVO001', 'DAVO001', 'End of March 2017', 142599.99, '2017-04-07 11:58:07', 7, 18500.99, 152599.99, NULL, 'DIG001', 1, 0, 'On site', 'Built like a digger!', 'Pristine', '2017-04-07 10:58:32');
+(1, 1, 2, 'Audi A3', '2017-04-10 12:09:34', '2017-07-06 11:51:33', 'Audi', 'A3', 'DAZ001', 'WRECK001', 'From the start of April 2017', 22599.99, '2017-04-07 11:51:33', 3, 8500.99, 22599.99, NULL, 'TRCK001', 1, 1, 'Burton on Salmon', 'This won''t last long!', 'New', '2017-04-10 11:09:34'),
+(2, 2, 2, 'A Big Digger', NULL, '2017-05-22 11:58:07', 'BIG', 'DIGGER', 'DAVO001', 'DAVO001', 'End of March 2017', 142599.99, '2017-04-07 11:58:07', 7, 18500.99, 152599.99, NULL, 'DIG001', NULL, 0, 'On site', 'Built like a digger!', 'Pristine', '2017-04-10 11:09:06');
 
 --
 -- Triggers `asset`
@@ -207,7 +207,7 @@ CREATE TABLE IF NOT EXISTS `asset_history` (
   `notes` text,
   `condition` varchar(128) NOT NULL,
   `date_updated` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `asset_history`
@@ -217,7 +217,9 @@ INSERT INTO `asset_history` (`id`, `asset_id`, `asset_type_id`, `employee_id`, `
 (1, 1, 1, 2, 'Audi A3', '2017-04-07 11:51:33', '2017-04-07 11:52:23', 'Audi', 'A3', 'DAZ001', 'WRECK001', 'From the start of April 2017', 22599.99, '2017-04-07 11:51:33', 3, 8500.99, 22599.99, NULL, 'TRCK001', 1, 0, 'Burton on Salmon', 'This won''t last long!', 'New', '2017-04-07 10:51:33'),
 (2, 1, 1, 2, 'Audi A3', '2017-04-07 11:51:33', '2017-07-06 11:51:33', 'Audi', 'A3', 'DAZ001', 'WRECK001', 'From the start of April 2017', 22599.99, '2017-04-07 11:51:33', 3, 8500.99, 22599.99, NULL, 'TRCK001', 1, 0, 'Burton on Salmon', 'This won''t last long!', 'New', '2017-04-07 10:55:29'),
 (3, 2, 2, 2, 'A Big Digger', '2017-04-07 11:58:07', '2017-05-22 11:58:07', 'BIG', 'DIGGER', 'DAVO001', 'DAVO001', 'End of March 2017', 142599.99, '2017-04-07 11:58:07', 7, 18500.99, 152599.99, NULL, 'DIG001', 1, 0, '', 'Built like a digger!', 'Pristine', '2017-04-07 10:58:07'),
-(4, 2, 2, 2, 'A Big Digger', '2017-04-07 11:58:07', '2017-05-22 11:58:07', 'BIG', 'DIGGER', 'DAVO001', 'DAVO001', 'End of March 2017', 142599.99, '2017-04-07 11:58:07', 7, 18500.99, 152599.99, NULL, 'DIG001', 1, 0, 'On site', 'Built like a digger!', 'Pristine', '2017-04-07 10:58:32');
+(4, 2, 2, 2, 'A Big Digger', '2017-04-07 11:58:07', '2017-05-22 11:58:07', 'BIG', 'DIGGER', 'DAVO001', 'DAVO001', 'End of March 2017', 142599.99, '2017-04-07 11:58:07', 7, 18500.99, 152599.99, NULL, 'DIG001', 1, 0, 'On site', 'Built like a digger!', 'Pristine', '2017-04-07 10:58:32'),
+(5, 2, 2, 2, 'A Big Digger', NULL, '2017-05-22 11:58:07', 'BIG', 'DIGGER', 'DAVO001', 'DAVO001', 'End of March 2017', 142599.99, '2017-04-07 11:58:07', 7, 18500.99, 152599.99, NULL, 'DIG001', NULL, 0, 'On site', 'Built like a digger!', 'Pristine', '2017-04-10 11:09:06'),
+(6, 1, 1, 2, 'Audi A3', '2017-04-10 12:09:34', '2017-07-06 11:51:33', 'Audi', 'A3', 'DAZ001', 'WRECK001', 'From the start of April 2017', 22599.99, '2017-04-07 11:51:33', 3, 8500.99, 22599.99, NULL, 'TRCK001', 1, 1, 'Burton on Salmon', 'This won''t last long!', 'New', '2017-04-10 11:09:34');
 
 -- --------------------------------------------------------
 
@@ -1597,6 +1599,24 @@ DELIMITER ;
 -- --------------------------------------------------------
 
 --
+-- Stand-in structure for view `view_asset_allocation`
+--
+CREATE TABLE IF NOT EXISTS `view_asset_allocation` (
+`id` int(11)
+,`asset` varchar(64)
+,`asset_type` varchar(64)
+,`allocated to` varchar(66)
+,`allocated on` varchar(19)
+,`allocated_employee_id` int(11)
+,`tracker_id` varchar(64)
+,`location` varchar(32)
+,`condition` varchar(128)
+,`by` varchar(66)
+,`date_updated` timestamp
+);
+-- --------------------------------------------------------
+
+--
 -- Stand-in structure for view `view_employees`
 --
 CREATE TABLE IF NOT EXISTS `view_employees` (
@@ -1663,6 +1683,15 @@ INSERT INTO `work_option` (`id`, `category_id`, `code`, `description`, `default_
 (14, 5, 'WSTSKIP', 'Skip Hire', 95.00),
 (15, 6, 'TRANSLOC', 'Train to location', 75.25),
 (16, 7, 'OTHUNK', 'Unforeseen site clearance', 55.25);
+
+-- --------------------------------------------------------
+
+--
+-- Structure for view `view_asset_allocation`
+--
+DROP TABLE IF EXISTS `view_asset_allocation`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`sterlingadmin`@`%` SQL SECURITY DEFINER VIEW `view_asset_allocation` AS select `a`.`id` AS `id`,`a`.`name` AS `asset`,`at`.`type` AS `asset_type`,(case when (`a`.`allocation_status` = 1) then concat(`u2`.`last_name`,', ',`u2`.`first_name`) else 'No one' end) AS `allocated to`,(case when (`a`.`allocation_status` = 1) then `a`.`date_allocated` else 'Not allocated' end) AS `allocated on`,`a`.`allocated_employee_id` AS `allocated_employee_id`,`a`.`tracker_id` AS `tracker_id`,`a`.`location` AS `location`,`a`.`condition` AS `condition`,concat(`u1`.`last_name`,', ',`u1`.`first_name`) AS `by`,`a`.`date_updated` AS `date_updated` from (((((`asset` `a` left join `asset_type` `at` on((`a`.`asset_type_id` = `at`.`id`))) left join `employee` `e` on((`a`.`employee_id` = `e`.`id`))) left join `user` `u1` on((`u1`.`id` = `e`.`id`))) left join `employee` `ae` on((`a`.`allocated_employee_id` = `ae`.`id`))) left join `user` `u2` on((`u2`.`id` = `ae`.`user_id`)));
 
 -- --------------------------------------------------------
 
@@ -1954,7 +1983,7 @@ MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 -- AUTO_INCREMENT for table `asset_history`
 --
 ALTER TABLE `asset_history`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT for table `asset_type`
 --
