@@ -4,10 +4,10 @@
 
 CREATE TABLE `productsbuyersbook` (
   `id` int(11) NOT NULL,
-  `supplier_id` varchar(10) DEFAULT NULL,
+  `supplier_id` varchar(10) DEFAULT NULL, -- doesnt always link to a supplier
   `nominal_code` varchar(10)  DEFAULT NULL,
   `description` int(11) DEFAULT NULL,
-  `item_rate` int(11) DEFAULT NULL,
+  `item_rate` decimal (),
   `category` varchar(64) DEFAULT NULL,
   `supplier` varchar(64)  DEFAULT NULL,
   `supplier_prefix` varchar(64)  DEFAULT NULL,
