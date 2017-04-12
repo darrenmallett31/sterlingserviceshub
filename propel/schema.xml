@@ -596,6 +596,18 @@
       <parameter name="Engine" value="InnoDB"/>
     </vendor>
   </table>
+  <table name="sessions" phpName="Sessions" idMethod="native">
+    <column name="id" phpName="Id" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+    <column name="userId" phpName="UserId" type="INTEGER" required="true"/>
+    <column name="session_guid" phpName="SessionGUID" type="VARCHAR" size="64" required="true" defaultValue=""/>
+    <column name="created_at" phpName="SessionCreated" type="TIMESTAMP" required="true"/>
+    <column name="accessed" phpName="SessionAccessed" type="TIMESTAMP" required="true"/>
+    <column name="ip_address" phpName="SessionAddress" type="VARCHAR" size="64" required="true" defaultValue=""/>
+    <column name="browser" phpName="SessionBrowser" type="VARCHAR" size="64" required="true" defaultValue=""/>
+    <foreign-key foreignTable="user" onDelete="CASCADE">
+      <reference local="userId" foreign="id"/>
+    </foreign-key>
+  </table>
   <table name="settings" phpName="Settings" idMethod="native">
     <column name="id" phpName="Id" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
     <column name="company_name" phpName="CompanyName" type="VARCHAR" size="32" required="true"/>
@@ -810,6 +822,7 @@
     <column name="start_date" phpName="StartDate" type="DATE" required="true"/>
     <column name="end_date" phpName="EndDate" type="DATE" required="false"/>
     <column name="password" phpName="Password" type="VARCHAR" size="64" required="true"/>
+    <column name="userGUID" phpName="UserGUID" type="VARCHAR" size="255" required="true" defaultValue=""/>
     <vendor type="mysql">
       <parameter name="Engine" value="InnoDB"/>
     </vendor>
