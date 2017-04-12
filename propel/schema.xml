@@ -815,11 +815,11 @@
     </vendor>
   </table>
   <table name="view_asset_allocation" phpName="ViewAssetAllocation" idMethod="native">
-    <column name="id" phpName="Id" type="INTEGER" required="false"/>
+    <column name="id" phpName="Id" type="INTEGER" required="false" primaryKey="true"/>
     <column name="asset" phpName="Asset" type="VARCHAR" size="64" required="false"/>
     <column name="asset_type" phpName="AssetType" type="VARCHAR" size="64" required="false"/>
-    <column name="allocated to" phpName="Allocated to" type="VARCHAR" size="66" required="false"/>
-    <column name="allocated on" phpName="Allocated on" type="VARCHAR" size="19" required="false"/>
+    <column name="allocated_to" phpName="AllocatedTo" type="VARCHAR" size="66" required="false"/>
+    <column name="allocated_on" phpName="AllocatedOn" type="VARCHAR" size="19" required="false"/>
     <column name="allocated_employee_id" phpName="AllocatedEmployeeId" type="INTEGER" required="false"/>
     <column name="tracker_id" phpName="TrackerId" type="VARCHAR" size="64" required="false"/>
     <column name="location" phpName="Location" type="VARCHAR" size="32" required="false"/>
@@ -831,7 +831,7 @@
     </vendor>
   </table>
   <table name="view_employees" phpName="ViewEmployees" idMethod="native">
-    <column name="Name" phpName="Name" type="VARCHAR" size="66" required="false"/>
+    <column name="Name" phpName="Name" type="VARCHAR" size="66" required="false"  primaryKey="true"/>
     <column name="Manager" phpName="Manager" type="VARCHAR" size="66" required="false"/>
     <column name="Reports" phpName="Reports" type="VARCHAR" size="3" required="false"/>
     <column name="Division" phpName="Division" type="VARCHAR" size="32" required="false"/>
@@ -841,7 +841,7 @@
     </vendor>
   </table>
   <table name="view_quote" phpName="ViewQuote" idMethod="native">
-    <column name="site" phpName="Site" type="VARCHAR" size="80" required="false"/>
+    <column name="site" phpName="Site" type="VARCHAR" size="80" required="false"  primaryKey="true"/>
     <column name="customer" phpName="Customer" type="VARCHAR" size="32" required="false"/>
     <column name="status" phpName="Status" type="CHAR" sqlType="enum('In-Progress','Accepted','Disabled')" required="false"/>
     <column name="by" phpName="By" type="VARCHAR" size="66" required="false"/>
@@ -851,9 +851,9 @@
     </vendor>
   </table>
   <table name="view_roles" phpName="ViewRoles" idMethod="native">
-    <column name="Name" phpName="Name" type="VARCHAR" size="66" required="false"/>
+    <column name="Name" phpName="Name" type="VARCHAR" size="66" required="false"  primaryKey="true"/>
     <column name="description" phpName="Description" type="VARCHAR" size="32" required="false"/>
-    <column name="Access Allowed" phpName="Access allowed" type="VARCHAR" size="3" required="false"/>
+    <column name="Access_Allowed" phpName="AccessAllowed" type="VARCHAR" size="3" required="false"/>
     <vendor type="mysql">
       <parameter name="Engine" value="InnoDB"/>
     </vendor>
