@@ -16,6 +16,71 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8 */;
 
+-- DaveW added to remove any existing triggers before we start
+DROP TRIGGER IF EXISTS insert_asset;
+DROP TRIGGER IF EXISTS update_asset;
+DROP TRIGGER IF EXISTS insert_customer;
+DROP TRIGGER IF EXISTS update_customer;
+DROP TRIGGER IF EXISTS insert_documentation;
+DROP TRIGGER IF EXISTS update_documentation;
+DROP TRIGGER IF EXISTS insert_job;
+DROP TRIGGER IF EXISTS update_job;
+DROP TRIGGER IF EXISTS insert_quote;
+DROP TRIGGER IF EXISTS update_quote;
+DROP TRIGGER IF EXISTS insert_settings;
+DROP TRIGGER IF EXISTS update_settings;
+DROP TRIGGER IF EXISTS insert_supplier;
+DROP TRIGGER IF EXISTS update_supplier;
+
+-- DaveW Drop existing tables to clean it out
+DROP TABLE IF EXISTS asset;
+DROP TABLE IF EXISTS asset_history;
+DROP TABLE IF EXISTS asset_type;
+DROP TABLE IF EXISTS category;
+DROP TABLE IF EXISTS customer;
+DROP TABLE IF EXISTS customer_address;
+DROP TABLE IF EXISTS customer_contact;
+DROP TABLE IF EXISTS customer_history;
+DROP TABLE IF EXISTS delivery_option;
+DROP TABLE IF EXISTS division;
+DROP TABLE IF EXISTS documentation;
+DROP TABLE IF EXISTS documentation_history;
+DROP TABLE IF EXISTS employee;
+DROP TABLE IF EXISTS employee_address;
+DROP TABLE IF EXISTS employee_email;
+DROP TABLE IF EXISTS employee_telephone;
+DROP TABLE IF EXISTS job;
+DROP TABLE IF EXISTS job_history;
+DROP TABLE IF EXISTS job_status;
+DROP TABLE IF EXISTS purchase_order;
+DROP TABLE IF EXISTS purchase_order_calloff;
+DROP TABLE IF EXISTS purchase_order_line_item;
+DROP TABLE IF EXISTS quote;
+DROP TABLE IF EXISTS quote_history;
+DROP TABLE IF EXISTS quote_option;
+DROP TABLE IF EXISTS quote_work;
+DROP TABLE IF EXISTS quote_work_option;
+DROP TABLE IF EXISTS roles;
+DROP TABLE IF EXISTS sessions;
+DROP TABLE IF EXISTS settings;
+DROP TABLE IF EXISTS settings_history;
+DROP TABLE IF EXISTS site;
+DROP TABLE IF EXISTS site_contact;
+DROP TABLE IF EXISTS supplier;
+DROP TABLE IF EXISTS supplier_address;
+DROP TABLE IF EXISTS supplier_contact;
+DROP TABLE IF EXISTS supplier_history;
+DROP TABLE IF EXISTS task;
+DROP TABLE IF EXISTS team;
+DROP TABLE IF EXISTS terms;
+DROP TABLE IF EXISTS user;
+DROP TABLE IF EXISTS view_asset_allocation;
+DROP TABLE IF EXISTS view_employees;
+DROP TABLE IF EXISTS view_quote;
+DROP TABLE IF EXISTS view_roles;
+DROP TABLE IF EXISTS work_option;
+
+
 --
 -- Database: `sterlingservices`
 --
@@ -60,6 +125,7 @@ CREATE TABLE IF NOT EXISTS `asset` (
 INSERT INTO `asset` (`id`, `asset_type_id`, `employee_id`, `name`, `date_allocated`, `date_to_service`, `make`, `model`, `serial_number`, `internal_id`, `in_service_date`, `total_cost`, `purchase_date`, `depreciation_years`, `depreciation_rate`, `book_value`, `supplier_id`, `tracker_id`, `allocated_employee_id`, `allocation_status`, `location`, `notes`, `condition`, `date_updated`) VALUES
 (1, 1, 2, 'Audi A3', '2017-04-10 12:09:34', '2017-07-06 11:51:33', 'Audi', 'A3', 'DAZ001', 'WRECK001', 'From the start of April 2017', 22599.99, '2017-04-07 11:51:33', 3, 8500.99, 22599.99, NULL, 'TRCK001', 1, 1, 'Burton on Salmon', 'This won''t last long!', 'New', '2017-04-10 11:09:34'),
 (2, 2, 2, 'A Big Digger', NULL, '2017-05-22 11:58:07', 'BIG', 'DIGGER', 'DAVO001', 'DAVO001', 'End of March 2017', 142599.99, '2017-04-07 11:58:07', 7, 18500.99, 152599.99, NULL, 'DIG001', NULL, 0, 'On site', 'Built like a digger!', 'Pristine', '2017-04-10 11:09:06');
+
 
 --
 -- Triggers `asset`
@@ -119,6 +185,8 @@ CREATE TRIGGER `insert_asset` AFTER INSERT ON `asset`
      END
 //
 DELIMITER ;
+
+
 DELIMITER //
 CREATE TRIGGER `update_asset` AFTER UPDATE ON `asset`
  FOR EACH ROW BEGIN
@@ -305,6 +373,7 @@ INSERT INTO `customer` (`id`, `employee_id`, `name`, `shortname`, `type`, `compa
 (2, 1, 'Another Customer', 'Anh', 'Domestic-Private', '001', 'www.asite.co.uk', 'foo@address.com', 31, 'EXP', 'CRD', 10000, 5000, 1250, 1, 1, 0, 15, 14, '2017-03-14 12:15:03'),
 (3, 3, 'Yet another Customer', 'Yet', 'Domestic-Private', 'YET001', 'www.yet.co.uk', 'yet@yet.com', 7, 'BETTERSCORE', 'YETSCORE', 0, 0, 0, 1, 1, 0, 13, 5, '2017-03-14 14:29:04');
 
+
 --
 -- Triggers `customer`
 --
@@ -353,6 +422,8 @@ CREATE TRIGGER `insert_customer` AFTER INSERT ON `customer`
      END
 //
 DELIMITER ;
+
+
 DELIMITER //
 CREATE TRIGGER `update_customer` AFTER UPDATE ON `customer`
  FOR EACH ROW BEGIN
@@ -544,6 +615,9 @@ INSERT INTO `documentation` (`id`, `employee_id`, `name`, `description`, `header
 (1, 2, 'Database Design', 'The database design documentation', NULL, NULL, NULL, './document_path/db design version 2.doc', '2017-04-07 11:49:04'),
 (2, 2, 'UI Design', 'The user interface design documentation', NULL, NULL, NULL, 'http://www.sterling-services.co.uk/document_path/ui_design_v2.pdf', '2017-04-07 11:48:30');
 
+
+
+
 --
 -- Triggers `documentation`
 --
@@ -572,6 +646,8 @@ CREATE TRIGGER `insert_documentation` AFTER INSERT ON `documentation`
      END
 //
 DELIMITER ;
+
+
 DELIMITER //
 CREATE TRIGGER `update_documentation` AFTER UPDATE ON `documentation`
  FOR EACH ROW BEGIN
@@ -754,6 +830,8 @@ CREATE TABLE IF NOT EXISTS `job` (
 INSERT INTO `job` (`id`, `site_id`, `employee_id`, `status_id`, `closed`, `date_updated`) VALUES
 (3, 2, 2, 1, 0, '2017-03-21 13:27:56');
 
+
+
 --
 -- Triggers `job`
 --
@@ -875,7 +953,7 @@ CREATE TABLE IF NOT EXISTS `purchase_order_calloff` (
   `vat_amount` decimal(15,2) NOT NULL DEFAULT '0.00',
   `total_inc_vat` decimal(15,2) NOT NULL DEFAULT '0.00',
   `po_sent_date` datetime NOT NULL,
-  `date_created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `date_created` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -917,6 +995,8 @@ CREATE TABLE IF NOT EXISTS `quote` (
 INSERT INTO `quote` (`id`, `quote_option_id`, `employee_id`, `status`, `date_updated`) VALUES
 (2, 4, 2, 'In-Progress', '2017-03-21 13:40:35'),
 (3, 4, 3, 'In-Progress', '2017-03-21 13:40:50');
+
+
 
 --
 -- Triggers `quote`
@@ -1133,6 +1213,7 @@ CREATE TABLE IF NOT EXISTS `settings` (
 
 INSERT INTO `settings` (`id`, `company_name`, `shortname`, `companyregno`, `website`, `default_email`, `address1`, `address2`, `city`, `county`, `postcode`, `tel_no`, `vat_rate`, `default_kpi_quote_rtnd_by`, `default_credit_hard_limit`, `default_credit_soft_limit`, `date_updated`) VALUES
 (1, 'Sterling Services', 'Sterling', 'STERL001', 'http://www.sterling-services.co.uk/', 'info@sterling-services.co.uk', 'line 1', 'line 2', 'Somewhere', 'A county', 'A postcode', '0800 111 2222', 20.00, 5, 10000.00, 5000.00, '2017-04-07 11:18:07');
+
 
 --
 -- Triggers `settings`
@@ -1685,40 +1766,6 @@ INSERT INTO `work_option` (`id`, `category_id`, `code`, `description`, `default_
 (16, 7, 'OTHUNK', 'Unforeseen site clearance', 55.25);
 
 -- --------------------------------------------------------
-
---
--- Structure for view `view_asset_allocation`
---
-DROP TABLE IF EXISTS `view_asset_allocation`;
-
-CREATE ALGORITHM=UNDEFINED DEFINER=`sterlingadmin`@`%` SQL SECURITY DEFINER VIEW `view_asset_allocation` AS select `a`.`id` AS `id`,`a`.`name` AS `asset`,`at`.`type` AS `asset_type`,(case when (`a`.`allocation_status` = 1) then concat(`u2`.`last_name`,', ',`u2`.`first_name`) else 'No one' end) AS `allocated to`,(case when (`a`.`allocation_status` = 1) then `a`.`date_allocated` else 'Not allocated' end) AS `allocated on`,`a`.`allocated_employee_id` AS `allocated_employee_id`,`a`.`tracker_id` AS `tracker_id`,`a`.`location` AS `location`,`a`.`condition` AS `condition`,concat(`u1`.`last_name`,', ',`u1`.`first_name`) AS `by`,`a`.`date_updated` AS `date_updated` from (((((`asset` `a` left join `asset_type` `at` on((`a`.`asset_type_id` = `at`.`id`))) left join `employee` `e` on((`a`.`employee_id` = `e`.`id`))) left join `user` `u1` on((`u1`.`id` = `e`.`id`))) left join `employee` `ae` on((`a`.`allocated_employee_id` = `ae`.`id`))) left join `user` `u2` on((`u2`.`id` = `ae`.`user_id`)));
-
--- --------------------------------------------------------
-
---
--- Structure for view `view_employees`
---
-DROP TABLE IF EXISTS `view_employees`;
-
-CREATE ALGORITHM=UNDEFINED DEFINER=`sterlingadmin`@`%` SQL SECURITY DEFINER VIEW `view_employees` AS select concat(`u1`.`last_name`,', ',`u1`.`first_name`) AS `Name`,ifnull(concat(`u2`.`last_name`,', ',`u2`.`first_name`),'Top Manager') AS `Manager`,(case when (`e`.`is_manager` = 1) then 'Yes' else 'No' end) AS `Reports`,coalesce(`d`.`description`,'None') AS `Division`,coalesce(`t`.`description`,'None') AS `Team` from (((((`employee` `e` left join `user` `u1` on((`u1`.`id` = `e`.`user_id`))) left join `employee` `m` on((`m`.`user_id` = `e`.`manager_id`))) left join `user` `u2` on((`u2`.`id` = `m`.`user_id`))) left join `division` `d` on((`d`.`id` = `e`.`division_id`))) left join `team` `t` on((`t`.`id` = `e`.`team_id`))) order by `u1`.`last_name`,`u1`.`first_name` desc;
-
--- --------------------------------------------------------
-
---
--- Structure for view `view_quote`
---
-DROP TABLE IF EXISTS `view_quote`;
-
-CREATE ALGORITHM=UNDEFINED DEFINER=`sterlingadmin`@`localhost` SQL SECURITY DEFINER VIEW `view_quote` AS select concat(`s`.`name`,', ',`s`.`address1`,', ',`s`.`postcode`) AS `site`,`c`.`name` AS `customer`,`q`.`status` AS `status`,concat(`u`.`last_name`,', ',`u`.`first_name`) AS `by`,`q`.`date_updated` AS `updated` from ((((((`quote` `q` left join `employee` `e` on((`q`.`employee_id` = `e`.`id`))) left join `user` `u` on((`e`.`user_id` = `u`.`id`))) left join `quote_option` `qo` on((`q`.`quote_option_id` = `qo`.`id`))) left join `job` `j` on((`qo`.`job_id` = `j`.`id`))) left join `site` `s` on((`j`.`site_id` = `s`.`id`))) left join `customer` `c` on((`s`.`customer_id` = `c`.`id`)));
-
--- --------------------------------------------------------
-
---
--- Structure for view `view_roles`
---
-DROP TABLE IF EXISTS `view_roles`;
-
-CREATE ALGORITHM=UNDEFINED DEFINER=`sterlingadmin`@`%` SQL SECURITY DEFINER VIEW `view_roles` AS select concat(`u`.`last_name`,', ',`u`.`first_name`) AS `Name`,`t`.`description` AS `description`,(case when (`r`.`access_allowed` = 1) then 'Yes' else 'No' end) AS `Access Allowed` from ((`user` `u` left join `roles` `r` on((`u`.`id` = `r`.`user_id`))) left join `task` `t` on((`r`.`task_id` = `t`.`id`)));
 
 --
 -- Indexes for dumped tables
