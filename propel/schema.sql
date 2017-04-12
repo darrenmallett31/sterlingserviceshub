@@ -770,6 +770,25 @@ CREATE TABLE `roles`
 ) ENGINE=InnoDB;
 
 -- ---------------------------------------------------------------------
+-- sessions
+-- ---------------------------------------------------------------------
+
+DROP TABLE IF EXISTS `sessions`;
+
+CREATE TABLE `sessions`
+(
+    `id` INTEGER NOT NULL AUTO_INCREMENT,
+    `userId` INTEGER NOT NULL,
+    `session_guid` VARCHAR(64) DEFAULT '' NOT NULL,
+    `created_at` DATETIME NOT NULL,
+    `accessed` DATETIME NOT NULL,
+    `ip_address` VARCHAR(64) DEFAULT '' NOT NULL,
+    `browser` VARCHAR(64) DEFAULT '' NOT NULL,
+    PRIMARY KEY (`id`),
+    INDEX `sessions_FI_1` (`userId`)
+) ENGINE=MyISAM;
+
+-- ---------------------------------------------------------------------
 -- settings
 -- ---------------------------------------------------------------------
 
@@ -1056,6 +1075,7 @@ CREATE TABLE `user`
     `start_date` DATE NOT NULL,
     `end_date` DATE,
     `password` VARCHAR(64) NOT NULL,
+    `userGUID` VARCHAR(255) DEFAULT '' NOT NULL,
     PRIMARY KEY (`id`)
 ) ENGINE=InnoDB;
 
